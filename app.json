@@ -4,7 +4,7 @@
     "slug": "storekeeper",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/splash-icon.png",
     "scheme": "storekeeper",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
