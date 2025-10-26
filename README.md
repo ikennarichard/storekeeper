@@ -59,11 +59,11 @@ eas build --platform ios --profile preview
 eas build --platform android --profile preview
 ```
 
-## 📲 Download APK
+## 📲 Relevant Links
 
-### APK
-
-<!-- - APK FILE -->
+- [Github](https://github.com/ikennarichard/storekeeper)
+- [APK file](https://expo.dev/accounts/richyyyy/projects/storekeeper/builds/c5b479ba-8fcb-4d68-864c-a634c488e395)
+- [Video Demo](https://drive.google.com/file/d/1afH-_akUYJcBu0OmPB0TV_24XkT7zQHb/view?usp=drivesdk)
 
 ### Installation Instructions
 
