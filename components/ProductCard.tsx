@@ -63,7 +63,7 @@ export default function ProductCard({
                 variant="bodyLarge"
                 style={[styles.value, { color: theme.colors.primary }]}
               >
-                ${product.price.toFixed(2)}
+                ₦{product.price.toFixed(2)}
               </Text>
             </View>
           </View>

@@ -1,4 +1,4 @@
-import { Product } from "@/types";
+import { Product, ProductInput, ProductUpdate } from "@/types";
 import * as SQLite from "expo-sqlite";
 
 const db = SQLite.openDatabaseSync("storekeeper.db");
@@ -31,6 +31,77 @@ export const getAllProducts = async (): Promise<Product[]> => {
     return result;
   } catch (error) {
     console.error("Error getting all products:", error);
+    return [];
+  }
+};
+
+export const getProductById = async (id: number): Promise<Product | null> => {
+  try {
+    const result = await db.getFirstAsync<Product>(
+      "SELECT * FROM products WHERE id = ?",
+      [id]
+    );
+    return result || null;
+  } catch (error) {
+    console.error("Error getting product by ID:", error);
+    return null;
+  }
+};
+
+export const addProduct = async (product: ProductInput): Promise<number> => {
+  try {
+    const result = await db.runAsync(
+      "INSERT INTO products (name, quantity, price, image_uri) VALUES (?, ?, ?, ?)",
+      [product.name, product.quantity, product.price, product.image_uri]
+    );
+    console.log("Product added with ID:", result.lastInsertRowId);
+    return result.lastInsertRowId;
+  } catch (error) {
+    console.error("Error adding product:", error);
+    throw error;
+  }
+};
+
+export const updateProduct = async (product: ProductUpdate): Promise<void> => {
+  try {
+    await db.runAsync(
+      `UPDATE products 
+       SET name = ?, quantity = ?, price = ?, image_uri = ?, updated_at = CURRENT_TIMESTAMP 
+       WHERE id = ?`,
+      [
+        product.name,
+        product.quantity,
+        product.price,
+        product.image_uri,
+        product.id,
+      ]
+    );
+    console.log("Product updated:", product.id);
+  } catch (error) {
+    console.error("Error updating product:", error);
+    throw error;
+  }
+};
+
+export const deleteProduct = async (id: number): Promise<void> => {
+  try {
+    await db.runAsync("DELETE FROM products WHERE id = ?", [id]);
+    console.log("Product deleted:", id);
+  } catch (error) {
+    console.error("Error deleting product:", error);
+    throw error;
+  }
+};
+
+export const searchProducts = async (query: string): Promise<Product[]> => {
+  try {
+    const result = await db.getAllAsync<Product>(
+      "SELECT * FROM products WHERE name LIKE ? ORDER BY updated_at DESC",
+      [`%${query}%`]
+    );
+    return result;
+  } catch (error) {
+    console.error("Error searching products:", error);
     return [];
   }
 };
