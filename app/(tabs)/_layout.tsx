@@ -17,7 +17,7 @@ export default function TabLayout() {
         headerTintColor: theme.colors.onPrimaryContainer,
         tabBarStyle: {
           backgroundColor: theme.colors.surface,
-          height: Platform.OS === 'ios'  ? 80 : 70,
+          height: Platform.OS === 'ios'  ? 80 : 60,
         },
       }}
     >

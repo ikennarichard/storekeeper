@@ -63,6 +63,7 @@ eas build --platform android --profile preview
 
 - [Github](https://github.com/ikennarichard/storekeeper)
 - [APK file](https://expo.dev/accounts/richyyyy/projects/storekeeper/builds/c5b479ba-8fcb-4d68-864c-a634c488e395)
+- [Live demo](https://appetize.io/app/b_336c4euedfgqkiukto2e3z7bru)
 - [Video Demo](https://drive.google.com/file/d/1afH-_akUYJcBu0OmPB0TV_24XkT7zQHb/view?usp=drivesdk)
 
 ### Installation Instructions
