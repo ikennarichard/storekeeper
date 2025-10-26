@@ -51,9 +51,9 @@ function RootLayoutNav() {
 
   return (
     <PaperProvider theme={theme}>
-   
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <StatusBar style={colorScheme === 'light' ? "dark" : 'light'} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)"  />
         <Stack.Screen
           name="product/new"
           options={{
