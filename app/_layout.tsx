@@ -1,7 +1,9 @@
+import { initDatabase } from "@/lib/db";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 import { MD3DarkTheme, MD3LightTheme, PaperProvider } from "react-native-paper";
@@ -42,8 +44,14 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
   const theme = colorScheme === "dark" ? MD3DarkTheme : MD3LightTheme;
 
+  useEffect(() => {
+    // Initialize db
+    initDatabase().catch(console.error);
+  }, []);
+
   return (
     <PaperProvider theme={theme}>
+   
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen

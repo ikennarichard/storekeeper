@@ -14,7 +14,11 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.storekeeper.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app needs access to your camera to take product photos.",
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to select product images."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -22,7 +26,13 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -31,7 +41,14 @@
     },
     "plugins": [
       "expo-router",
-      "expo-sqlite"
+      "expo-sqlite",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Storekeeper to access your photos to add product images.",
+          "cameraPermission": "Allow Storekeeper to access your camera to take product photos."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
