@@ -1,3 +1,4 @@
+import { Product } from "@/types";
 import * as SQLite from "expo-sqlite";
 
 const db = SQLite.openDatabaseSync("storekeeper.db");
@@ -19,6 +20,18 @@ export const initDatabase = async () => {
   } catch (error) {
     console.error("Error initializing database:", error);
     throw error;
+  }
+};
+
+export const getAllProducts = async (): Promise<Product[]> => {
+  try {
+    const result = await db.getAllAsync<Product>(
+      "SELECT * FROM products ORDER BY updated_at DESC"
+    );
+    return result;
+  } catch (error) {
+    console.error("Error getting all products:", error);
+    return [];
   }
 };
 
